@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>Dashboard Administrativo</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- GOOGLE FONTS -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- FONT AWESOME -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- CHART.JS -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- SIDEBAR -->
+        <aside
+            class="sidebar">
+
+            <div class="logo">
+
+                <h2>Panel_Admin</h2>
+
+            </div>
+
+            <nav aria-label="Menú principal">
+
+                <ul class="menu">
+
+                    <li>
+                        <a
+                            href="#"
+                            class="active">
+                            <i class="fa-solid fa-house"></i>
+                            Inicio
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#">
+                            <i class="fa-solid fa-box"></i>
+                            Inventario
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#">
+                            <i class="fa-solid fa-chart-line"></i>
+                            Ventas
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#">
+                            <i class="fa-solid fa-users"></i>
+                            Usuarios
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#">
+                            <i class="fa-solid fa-file"></i>
+                            Reportes
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#">
+                            <i class="fa-solid fa-gear"></i>
+                            Configuración
+                        </a>
+                    </li>
+
+                </ul>
+
+            </nav>
+
+        </aside>
+
+        <!-- HEADER -->
+        <header
+            class="header">
+
+            <div>
+
+                <h1 id="pageTitle">Dashboard Administrativo</h1>
+
+            </div>
+
+            <div class="user">
+
+                <img
+                    src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
+                    alt="Imagen del administrador"
+                    class="avatar">
+
+                <span>Administrador</span>
+
+            </div>
+
+        </header>
+
+        <!-- MAIN -->
+        <main
+            class="main">
+
+            <!-- CARDS -->
+            <section class="cards">
+
+                <article class="card">
+
+                    <div class="card-top">
+
+                        <h2>Ventas</h2>
+
+                        <i class="fa-solid fa-dollar-sign"></i>
+
+                    </div>
+
+                    <p class="ventas">$15.450</p>
+
+                </article>
+
+                <article class="card">
+
+                    <div class="card-top">
+
+                        <h2>Usuarios</h2>
+
+                        <i class="fa-solid fa-users"></i>
+
+                    </div>
+
+                    <p class="usuarios">1.280</p>
+
+                </article>
+
+                <article class="card">
+
+                    <div class="card-top">
+
+                        <h2>Productos</h2>
+
+                        <i class="fa-solid fa-box"></i>
+
+                    </div>
+
+                    <p class="productos">340</p>
+
+                </article>
+
+                <article class="card">
+
+                    <div class="card-top">
+
+                        <h2>Pedidos</h2>
+
+                        <i class="fa-solid fa-cart-shopping"></i>
+
+                    </div>
+
+                    <p class="pedidos">98</p>
+
+                </article>
+
+            </section>
+
+            <!-- GRAFICAS -->
+            <section class="chart-section">
+
+                <div class="chart-header">
+
+                    <h2>Resumen de ventas</h2>
+
+                </div>
+
+                <div class="bars">
+
+                    <div
+                        class="bar gradient1"
+                        style="height: 70%;"
+                        data-percentage="70">
+
+                        <span class="bar-label">Ene</span>
+                        <span class="bar-percentage">70%</span>
+
+                    </div>
+
+                    <div
+                        class="bar gradient2"
+                        style="height: 50%;"
+                        data-percentage="50">
+
+                        <span class="bar-label">Feb</span>
+                        <span class="bar-percentage">50%</span>
+
+                    </div>
+
+                    <div
+                        class="bar gradient3"
+                        style="height: 90%;"
+                        data-percentage="90">
+
+                        <span class="bar-label">Mar</span>
+                        <span class="bar-percentage">90%</span>
+
+                    </div>
+
+                    <div
+                        class="bar gradient4"
+                        style="height: 60%;"
+                        data-percentage="60">
+
+                        <span class="bar-label">Abr</span>
+                        <span class="bar-percentage">60%</span>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+            <!-- REPORTES - GRAFICOS DE TORTA -->
+            <section class="reports-section" id="reportsSection" style="display: none;">
+
+                <div class="chart-header">
+
+                    <h2>Reportes Detallados</h2>
+
+                </div>
+
+                <div class="pie-charts-container">
+
+                    <div class="pie-chart-wrapper">
+                        <h3>Distribución de Ventas</h3>
+                        <canvas id="pieSalesChart"></canvas>
+                    </div>
+
+                    <div class="pie-chart-wrapper">
+                        <h3>Categorías de Productos</h3>
+                        <canvas id="pieCategoriesChart"></canvas>
+                    </div>
+
+                    <div class="pie-chart-wrapper">
+                        <h3>Estado del Inventario</h3>
+                        <canvas id="pieInventoryChart"></canvas>
+                    </div>
+
+                    <div class="pie-chart-wrapper">
+                        <h3>Tipos de Usuarios</h3>
+                        <canvas id="pieUsersChart"></canvas>
+                    </div>
+
+                </div>
+
+            </section>
+
+            <!-- TABLA -->
+            <section class="table-container">
+
+                <div class="table-header">
+
+                    <h2>Productos recientes</h2>
+
+                    <button>Ver Todo</button>
+
+                </div>
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>Producto</th>
+                            <th>Stock</th>
+                            <th>Estado</th>
+                            <th>Precio</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+
+                            <td>Laptop Dell</td>
+                            <td>25</td>
+                            <td class="status available">
+                                Disponible
+                            </td>
+                            <td>$2.500</td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>Monitor LG</td>
+                            <td>8</td>
+                            <td class="status low">
+                                Bajo
+                            </td>
+                            <td>$850</td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>Teclado Logitech</td>
+                            <td>40</td>
+                            <td class="status available">
+                                Disponible
+                            </td>
+                            <td>$120</td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>Mouse HP</td>
+                            <td>5</td>
+                            <td class="status low">
+                                Bajo
+                            </td>
+                            <td>$90</td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </section>
+
+        </main>
+
+        <!-- FOOTER -->
+        <footer class="footer">
+
+            <p>
+                © 2026 Dashboard Administrativo |
+                Desarrollado por Jorge A. Sandoval
+            </p>
+
+        </footer>
+
+    </div>
+
+    <!-- JAVASCRIPT -->
+
+    <script>
+
+        // DATOS DEL DASHBOARD
+
+        const dashboardData = {
+
+            inicio: {
+
+                ventas: "$15.450",
+                usuarios: "1.280",
+                productos: "340",
+                pedidos: "98",
+
+                grafica: [70, 50, 90, 60],
+
+                tabla: [
+                    ["Laptop Dell", "25", "Disponible", "$2.500"],
+                    ["Monitor LG", "8", "Bajo", "$850"],
+                    ["Teclado Logitech", "40", "Disponible", "$120"],
+                    ["Mouse HP", "5", "Bajo", "$90"]
+                ]
+            },
+
+            inventario: {
+
+                ventas: "$8.200",
+                usuarios: "320",
+                productos: "720",
+                pedidos: "45",
+
+                grafica: [90, 80, 60, 95],
+
+                tabla: [
+                    ["Disco SSD", "80", "Disponible", "$300"],
+                    ["RAM 16GB", "15", "Disponible", "$220"],
+                    ["Procesador Intel", "5", "Bajo", "$900"],
+                    ["Fuente Poder", "30", "Disponible", "$180"]
+                ]
+            },
+
+            ventas: {
+
+                ventas: "$35.900",
+                usuarios: "2.540",
+                productos: "120",
+                pedidos: "210",
+
+                grafica: [50, 95, 85, 100],
+
+                tabla: [
+                    ["iPhone 15", "12", "Disponible", "$4.500"],
+                    ["Galaxy S24", "7", "Bajo", "$4.100"],
+                    ["iPad Air", "18", "Disponible", "$3.200"],
+                    ["MacBook Pro", "4", "Bajo", "$8.500"]
+                ]
+            },
+
+            usuarios: {
+
+                ventas: "$5.400",
+                usuarios: "4.200",
+                productos: "50",
+                pedidos: "25",
+
+                grafica: [40, 70, 60, 80],
+
+                tabla: [
+                    ["Usuario Premium", "120", "Activo", "$90"],
+                    ["Usuario Básico", "500", "Activo", "$30"],
+                    ["Usuario VIP", "15", "Activo", "$150"],
+                    ["Usuario Nuevo", "40", "Pendiente", "$0"]
+                ]
+            },
+
+            reportes: {
+
+                ventas: "$60.950",
+                usuarios: "8.240",
+                productos: "1.230",
+                pedidos: "403",
+
+                grafica: [50, 95, 85, 100],
+
+                tabla: [
+                    ["Reporte General", "Mensual", "Disponible", "$0"],
+                    ["Análisis de Ventas", "Mensual", "Disponible", "$0"],
+                    ["Inventario", "Semanal", "Disponible", "$0"],
+                    ["Usuarios Activos", "Diario", "Disponible", "$0"]
+                ],
+
+                pieCharts: {
+                    sales: {
+                        labels: ["Q1", "Q2", "Q3", "Q4"],
+                        data: [25000, 35000, 28000, 28950]
+                    },
+                    categories: {
+                        labels: ["Electrónica", "Accesorios", "Software", "Otros"],
+                        data: [45, 25, 20, 10]
+                    },
+                    inventory: {
+                        labels: ["Disponible", "Bajo Stock", "Agotado"],
+                        data: [70, 20, 10]
+                    },
+                    users: {
+                        labels: ["Premium", "Básico", "VIP", "Nuevo"],
+                        data: [15, 60, 5, 20]
+                    }
+                }
+            },
+
+            configuración: {
+
+                ventas: "Sistema Activo",
+                usuarios: "5 Conectados",
+                productos: "Auto Sync",
+                pedidos: "100% OK",
+
+                grafica: [100, 100, 100, 100],
+
+                tabla: [
+                    ["Tema Oscuro", "Desactivado", "Disponible", "Beta"],
+                    ["Notificaciones", "Activadas", "Disponible", "v1.0"],
+                    ["Respaldo de Datos", "Activo", "Disponible", "Diario"],
+                    ["Modo Offline", "Inactivo", "Disponible", "Proximamente"]
+                ]
+            }
+
+        };
+
+        // ELEMENTOS
+
+        const menuLinks =
+            document.querySelectorAll(".menu a");
+
+        const ventas =
+            document.querySelector(".ventas");
+
+        const usuarios =
+            document.querySelector(".usuarios");
+
+        const productos =
+            document.querySelector(".productos");
+
+        const pedidos =
+            document.querySelector(".pedidos");
+
+        const bars =
+            document.querySelectorAll(".bar");
+
+        const tableBody =
+            document.querySelector("tbody");
+
+        const reportsSection =
+            document.getElementById("reportsSection");
+
+        const chartsContainer =
+            document.querySelector(".chart-section");
+
+        const pageTitle =
+            document.getElementById("pageTitle");
+
+        let pieCharts = {};
+
+        // TITULOS POR SECCION
+        const sectionTitles = {
+            inicio: "Dashboard Administrativo",
+            inventario: "Gestión de Inventario",
+            ventas: "Análisis de Ventas",
+            usuarios: "Administración de Usuarios",
+            reportes: "Reportes Detallados",
+            "configuración": "Configuración del Sistema"
+        };
+
+        // COLORES PARA GRAFICOS DE TORTA
+
+        const chartColors = {
+            blues: ["#2563eb", "#60a5fa", "#3b82f6", "#1e40af"],
+            rainbow: ["#2563eb", "#7c3aed", "#059669", "#ea580c"],
+            pastels: ["#93c5fd", "#c084fc", "#6ee7b7", "#fbbf24"]
+        };
+
+        // PLUGIN PARA MOSTRAR PORCENTAJES EN PIE CHARTS
+
+        const percentagePlugin = {
+            id: 'percentageLabel',
+            afterDatasetsDraw(chart) {
+                const {
+                    ctx,
+                    data,
+                    chartArea: { left, top, width, height }
+                } = chart;
+                
+                chart.getDatasetMeta(0).data.forEach((point, index) => {
+                    const { x, y } = point.tooltipPosition();
+                    const value = data.datasets[0].data[index];
+                    const total = data.datasets[0].data.reduce((a, b) => a + b, 0);
+                    const percentage = ((value / total) * 100).toFixed(1);
+                    
+                    ctx.fillStyle = 'rgba(255, 255, 255, 1)';
+                    ctx.font = 'bold 13px Inter';
+                    ctx.textAlign = 'center';
+                    ctx.textBaseline = 'middle';
+                    ctx.fillText(percentage + '%', x, y);
+                });
+            }
+        };
+
+        // FUNCION CREAR GRAFICOS DE TORTA
+
+        function createPieCharts(pieChartData) {
+
+            // DESTRUIR GRAFICOS ANTERIORES
+
+            Object.values(pieCharts).forEach(chart => {
+                if (chart) chart.destroy();
+            });
+
+            pieCharts = {};
+
+            // GRAFICO 1: VENTAS
+
+            const ctx1 = document.getElementById("pieSalesChart").getContext("2d");
+            pieCharts.sales = new Chart(ctx1, {
+                type: "doughnut",
+                data: {
+                    labels: pieChartData.sales.labels,
+                    datasets: [{
+                        data: pieChartData.sales.data,
+                        backgroundColor: chartColors.blues,
+                        borderColor: "#ffffff",
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: { position: "bottom" },
+                        percentageLabel: true
+                    }
+                },
+                plugins: [percentagePlugin]
+            });
+
+            // GRAFICO 2: CATEGORIAS
+
+            const ctx2 = document.getElementById("pieCategoriesChart").getContext("2d");
+            pieCharts.categories = new Chart(ctx2, {
+                type: "pie",
+                data: {
+                    labels: pieChartData.categories.labels,
+                    datasets: [{
+                        data: pieChartData.categories.data,
+                        backgroundColor: chartColors.rainbow,
+                        borderColor: "#ffffff",
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: { position: "bottom" },
+                        percentageLabel: true
+                    }
+                },
+                plugins: [percentagePlugin]
+            });
+
+            // GRAFICO 3: INVENTARIO
+
+            const ctx3 = document.getElementById("pieInventoryChart").getContext("2d");
+            pieCharts.inventory = new Chart(ctx3, {
+                type: "doughnut",
+                data: {
+                    labels: pieChartData.inventory.labels,
+                    datasets: [{
+                        data: pieChartData.inventory.data,
+                        backgroundColor: ["#16a34a", "#fbbf24", "#dc2626"],
+                        borderColor: "#ffffff",
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: { position: "bottom" },
+                        percentageLabel: true
+                    }
+                },
+                plugins: [percentagePlugin]
+            });
+
+            // GRAFICO 4: USUARIOS
+
+            const ctx4 = document.getElementById("pieUsersChart").getContext("2d");
+            pieCharts.users = new Chart(ctx4, {
+                type: "pie",
+                data: {
+                    labels: pieChartData.users.labels,
+                    datasets: [{
+                        data: pieChartData.users.data,
+                        backgroundColor: chartColors.pastels,
+                        borderColor: "#ffffff",
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: { position: "bottom" },
+                        percentageLabel: true
+                    }
+                },
+                plugins: [percentagePlugin]
+            });
+            };
+
+        
+
+        // FUNCION ACTUALIZAR
+
+        function updateDashboard(section) {
+
+            const data =
+                dashboardData[section];
+
+            // ACTUALIZAR TITULO
+            if (sectionTitles[section]) {
+                pageTitle.textContent = sectionTitles[section];
+                pageTitle.style.animation = "fadeIn 0.3s ease";
+            }
+
+            // CARDS
+
+            ventas.textContent =
+                data.ventas;
+
+            usuarios.textContent =
+                data.usuarios;
+
+            productos.textContent =
+                data.productos;
+
+            pedidos.textContent =
+                data.pedidos;
+
+            // MOSTRAR/OCULTAR SECCIONES
+
+            if (section === "reportes") {
+                chartsContainer.style.display = "none";
+                reportsSection.style.display = "block";
+                createPieCharts(data.pieCharts);
+            } else {
+                chartsContainer.style.display = "block";
+                reportsSection.style.display = "none";
+                bars.forEach((bar, index) => {
+                    const percentage = data.grafica[index];
+                    bar.style.height = percentage + "%";
+                    bar.setAttribute("data-percentage", percentage);
+                    bar.querySelector(".bar-percentage").textContent = percentage + "%";
+                });
+            }
+
+            // TABLA
+
+            tableBody.innerHTML = "";
+
+            data.tabla.forEach(item => {
+
+                const row =
+                    document.createElement("tr");
+
+                row.innerHTML = `
+
+                    <td>${item[0]}</td>
+
+                    <td>${item[1]}</td>
+
+                    <td class="
+                        status
+                        ${item[2] === 'Disponible' || item[2] === 'Activo'
+                            ? 'available'
+                            : 'low'}
+                    ">
+
+                        ${item[2]}
+
+                    </td>
+
+                    <td>${item[3]}</td>
+
+                `;
+
+                tableBody.appendChild(row);
+
+            });
+
+        }
+
+        // EVENTOS MENU
+
+        menuLinks.forEach(link => {
+
+            link.addEventListener("click", (e) => {
+
+                e.preventDefault();
+
+                // REMOVER ACTIVE
+
+                menuLinks.forEach(item => {
+
+                    item.classList.remove("active");
+
+                });
+
+                // AGREGAR ACTIVE
+
+                link.classList.add("active");
+
+                // OBTENER TEXTO MENU
+
+                const section =
+                    link.textContent
+                        .trim()
+                        .toLowerCase();
+
+                // ACTUALIZAR
+
+                if (dashboardData[section]) {
+
+                    updateDashboard(section);
+
+                }
+
+            });
+
+        });
+
+    </script>
+
+</body>
+
+</html>
